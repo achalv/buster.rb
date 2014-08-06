@@ -11,6 +11,7 @@ Every time you run `jekyll serve` or `jekyll build`, buster will append a new ha
 
 Add buster.rb to the `_plugins/` folder in your Jekyll site. Then, in your code, you can use the liquid tag `{% buster %}` wherever you want buster to add a hash.
 
+
 ## **Example**
 
 Using {% buster %} with app.js like such...
@@ -22,6 +23,35 @@ would give us this result when Jekyll generates our markup –
 <script src="/js/app.js?dfc274b88222920b4d89006fde43c19f"></script>
 ```
 ***That's it!***
+
+## **Projects that use buster.rb**
+
+Projects using buster:
+
+- [Reflections Projections 2014](http://rp.cs.illinois.edu/)
+
+If your project uses buster in production, I'd love to add it to ^that^ list! Let me know. :shipit:
+
+## **Future Development**
+
+I know buster is pretty tiny, and I wrote this as I needed it. However, I'd like for buster to be a more intuitive solution. Appending a hash to a filename works, but we can do better. :grin:
+
+Going to change this implementation such that buster can be used in multiple different ways. Some ideas –
+
+- File(name|path) as part of the Liquid tag:
+```
+<script src="{% /js/app.js buster %}"></script>
+```
+- Hash as part of the filename, so that the final rendered markup is like so:
+```
+<script src="/js/app-dfc274b88222920b4d89006fde43c19f.js"></script>
+```
+- File(name|path) is replaced with the hash:
+
+```
+<script src="dfc274b88222920b4d89006fde43c19f.js"></script>
+```
+The last two methods might need users to edit their .htaccess. I'll figure that out as I work towards these.
 
 ## **Need help?**
 
